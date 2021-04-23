@@ -1,14 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import Person from './Person';
-import Header from './Component/Client/Header';
-import MainContent from './Component/Client/MainContent';
+import Header from './Component/Client/Home/Header';
+import MainContent from './Component/Client/Home/MainContent';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Login from "./Component/Client/Login/Login";
 function App() {
   return (
-    <div className="App">
-    <Header></Header>
-    <MainContent></MainContent>
-    </div>
+    <Router>
+      <div>
+        <Route path="/" exact component={MainContent}></Route>
+        <Route path="/Login" component={Login}></Route>
+        {/* <Header></Header>
+        <MainContent></MainContent> */}
+      </div>
+    </Router>
   );
 }
 
