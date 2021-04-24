@@ -7,13 +7,12 @@ class Product extends React.Component {
     render(){
         return (
             <div className="col-lbr l-2-4 m-4 c-6-lbr" onClick={()=>this.ShowDetail()}>
-                <a className="home-produce-item" href="#">
-                    <div className="home-produce-item__img" style={{ backgroundImage: 'url("http://localhost:3000/f8-shop/assets/img/product.png")' }} />
-                    <h4 className="home-produce-item__name">Set kem mắt tái sinh Ohui The First Geniture
-                            Eye Cream Edition Grand Blue</h4>
+                <a className="home-produce-item" href="/#">
+                    <div className="home-produce-item__img" style={{ backgroundImage: 'url("'+this.props.ImagePath+'")' }} />
+                    <h4 className="home-produce-item__name">{this.props.ProductName}</h4>
                     <div className="home-produce-item__price">
                         <span className="home-produce-item__price-old">4600000đ</span>
-                        <span className="home-produce-item__price-new">4140000đ</span>
+                        <span className="home-produce-item__price-new">{this.props.NewPrice}</span>
                     </div>
                     <div className="home-produce-item__action">
                         <span className="home-produce-item__like home-produce-item__liked">
@@ -30,8 +29,8 @@ class Product extends React.Component {
                         <span className="home-produce-item__sold">88 đã bán</span>
                     </div>
                     <div className="home-produce-item__origin">
-                        <span className="home-produce-item__origin-brand">Whoo</span>
-                        <span className="home-produce-item__origin-name">Nhật bản</span>
+                        <span className="home-produce-item__origin-brand">Đắc lắc</span>
+                        <span className="home-produce-item__origin-name">{this.props.Category}</span>
                     </div>
                     <div className="home-produce-item__favourite">
                         <i className="fas fa-check" />

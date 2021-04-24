@@ -1,18 +1,54 @@
+import React from "react";
+import axios from 'axios';
 import Product from "./Product";
 import Category from "./Category";
-import Header from "./Header";
-var baseurl = "http://localhost:3000/";
-function MainContent() {
-    return (
-        <div>
-            <div>
-                <link rel="stylesheet" href={baseurl+"f8-shop/assets/css/grid.css"} />
-                <link rel="stylesheet" href={baseurl+"f8-shop/assets/css/base.css"} />
-                <link rel="stylesheet" href={baseurl+"f8-shop/assets/css/main.css"} />
-                <link rel="stylesheet" href={baseurl+"f8-shop/assets/css/responsive.css"} />
-                <link rel="stylesheet" href={baseurl+"f8-shop/assets/font/fontawesome-free-5.15.1-web/css/all.min.css"} />
-            </div>
-            <Header></Header>
+
+class MainContent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            Products: []
+        };
+        const axios = require('axios');
+    }
+    componentDidMount=()=> {
+        let self = this;
+        axios.get('https://localhost:44384/api/Product')
+            .then(function (response) {
+                // handle success
+               
+                self.setState({
+                    Products:response.data.data
+                })
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+            });
+    }
+    showProducts(Products){
+        var result=null;
+        console.log(Products)
+        if(Products.length>0){
+            console.log("ok")
+            result=Products.map((product,index)=> {
+                return(<Product 
+                    key={index}
+                    ProductName={product.Name}
+                    ImagePath={product.ImagePath}
+                    NewPrice={product.Price}
+                />);
+                })
+        }
+        return result;
+    }
+    render() {
+        
+        var listProduct=this.state.Products;
+        return (
+
             <div className="app__container">
                 <div className="grid wide">
                     <div className="row-lbr sm-gutter app__content">
@@ -20,8 +56,8 @@ function MainContent() {
                             <nav className="category">
                                 <h3 className="category__heading">
                                     <i className="category__heading-icon fas fa-list-ul" />
-                  Danh mục
-                </h3>
+          Danh mục
+        </h3>
                                 <ul className="category-list">
                                     <Category
                                         Name="Hạt"
@@ -50,22 +86,22 @@ function MainContent() {
                                     {/* list option */}
                                     <ul className="select-input__list">
                                         <li className="select-input__item">
-                                            <a href="#" className="select-input__link">Giá: Thấp đến cao</a>
+                                            <a href="/#" className="select-input__link">Giá: Thấp đến cao</a>
                                         </li>
                                         <li className="select-input__item">
-                                            <a href="#" className="select-input__link">Giá: Cao đến thấp</a>
+                                            <a href="/#" className="select-input__link">Giá: Cao đến thấp</a>
                                         </li>
                                     </ul>
                                 </div>
                                 <div className="home-filter__page">
                                     <span className="home-filter__page-num">
                                         <span className="home-filter__page-current">1</span>/14
-                  </span>
+          </span>
                                     <div className="home-filter__page-control">
-                                        <a href="#" className="home-filter__page-btn  home-filter__page-btn--disable">
+                                        <a href="/#" className="home-filter__page-btn  home-filter__page-btn--disable">
                                             <i className="fas fa-angle-left home-filter__page-icon" />
                                         </a>
-                                        <a href="#" className="home-filter__page-btn">
+                                        <a href="/#" className="home-filter__page-btn">
                                             <i className="fas fa-angle-right home-filter__page-icon" />
                                         </a>
                                     </div>
@@ -74,45 +110,44 @@ function MainContent() {
                             <div className="home-produce">
                                 <nav className="mobile__category">
                                     <ul className="mobile__category-list">
-                                        <Category></Category>
-                                        <Category></Category>
-                                        <Category></Category>
-                                        <Category></Category>
+                                        <Category Name="Hạt"></Category>
+                                        <Category Name="Hạt"></Category>
+                                        <Category Name="Hạt"></Category>
+                                        <Category Name="Hạt"></Category>
                                     </ul>
                                 </nav>
                                 {/* List products */}
                                 <div className="row-lbr sm-gutter list-product">
-                                    <Product></Product>
-                                    <Product></Product>
+                                    {this.showProducts(listProduct)}
 
                                 </div>
                             </div>
                             <ul className="pagination produce-pagination">
                                 <li className="pagination-item">
-                                    <a href="#" className="pagination-item__link">
+                                    <a href="/#" className="pagination-item__link">
                                         <i className="pagination-item__icon fas fa-angle-left" />
                                     </a>
                                 </li>
                                 <li className="pagination-item pagination-item-active">
-                                    <a href="#" className="pagination-item__link">1</a>
+                                    <a href="/#" className="pagination-item__link">1</a>
                                 </li>
                                 <li className="pagination-item">
-                                    <a href="#" className="pagination-item__link">2</a>
+                                    <a href="/#" className="pagination-item__link">2</a>
                                 </li>
                                 <li className="pagination-item">
-                                    <a href="#" className="pagination-item__link">3</a>
+                                    <a href="/#" className="pagination-item__link">3</a>
                                 </li>
                                 <li className="pagination-item">
-                                    <a href="#" className="pagination-item__link">4</a>
+                                    <a href="/#" className="pagination-item__link">4</a>
                                 </li>
                                 <li className="pagination-item">
-                                    <a href="#" className="pagination-item__link">...</a>
+                                    <a href="/#" className="pagination-item__link">...</a>
                                 </li>
                                 <li className="pagination-item">
-                                    <a href="#" className="pagination-item__link">14</a>
+                                    <a href="/#" className="pagination-item__link">14</a>
                                 </li>
                                 <li className="pagination-item">
-                                    <a href="#" className="pagination-item__link">
+                                    <a href="/#" className="pagination-item__link">
                                         <i className="pagination-item__icon fas fa-angle-right" />
                                     </a>
                                 </li>
@@ -121,8 +156,9 @@ function MainContent() {
                     </div>
                 </div>
             </div>
-        </div>
-    );
+
+        );
+    }
 }
 
 export default MainContent;

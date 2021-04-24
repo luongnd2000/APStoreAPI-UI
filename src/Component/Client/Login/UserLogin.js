@@ -1,9 +1,7 @@
 import React from "react";
-import Helmet from 'react-helmet';
-
 var baseurl = "http://localhost:3000/";
 
-class Login extends React.Component {
+class UserLogin extends React.Component {
     render() {
         return (
             <div>
@@ -15,7 +13,7 @@ class Login extends React.Component {
                 <nav id="navbar-main" className="navbar navbar-horizontal navbar-transparent navbar-main navbar-expand-lg navbar-light">
                     <div className="container">
                         <a className="navbar-brand" href="dashboard.html">
-                            <img src={baseurl + "argon-dashboard-master/assets/img/brand/white.png"} />
+                            <img src={baseurl + "argon-dashboard-master/assets/img/brand/white.png" } alt="text" />
                         </a>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon" />
@@ -25,7 +23,7 @@ class Login extends React.Component {
                                 <div className="row">
                                     <div className="col-6 collapse-brand">
                                         <a href="dashboard.html">
-                                            <img src={baseurl + "argon-dashboard-master/assets/img/brand/blue.png"} />
+                                            <img src={baseurl + "argon-dashboard-master/assets/img/brand/blue.png" } alt="text" />
                                         </a>
                                     </div>
                                     <div className="col-6 collapse-close">
@@ -56,31 +54,31 @@ class Login extends React.Component {
                             <hr className="d-lg-none" />
                             <ul className="navbar-nav align-items-lg-center ml-lg-auto">
                                 <li className="nav-item">
-                                    <a className="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank" data-toggle="tooltip" data-original-title="Like us on Facebook">
+                                    <a className="nav-link nav-link-icon" href="https://www.facebook.com/creativetim" target="_blank" rel="noreferrer" data-toggle="tooltip" data-original-title="Like us on Facebook">
                                         <i className="fab fa-facebook-square" />
                                         <span className="nav-link-inner--text d-lg-none">Facebook</span>
                                     </a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link nav-link-icon" href="https://www.instagram.com/creativetimofficial" target="_blank" data-toggle="tooltip" data-original-title="Follow us on Instagram">
+                                    <a className="nav-link nav-link-icon" href="https://www.instagram.com/creativetimofficial" target="_blank" rel="noreferrer" data-toggle="tooltip" data-original-title="Follow us on Instagram">
                                         <i className="fab fa-instagram" />
                                         <span className="nav-link-inner--text d-lg-none">Instagram</span>
                                     </a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link nav-link-icon" href="https://twitter.com/creativetim" target="_blank" data-toggle="tooltip" data-original-title="Follow us on Twitter">
+                                    <a className="nav-link nav-link-icon" href="https://twitter.com/creativetim" target="_blank" rel="noreferrer"  data-toggle="tooltip" data-original-title="Follow us on Twitter">
                                         <i className="fab fa-twitter-square" />
                                         <span className="nav-link-inner--text d-lg-none">Twitter</span>
                                     </a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link nav-link-icon" href="https://github.com/creativetimofficial" target="_blank" data-toggle="tooltip" data-original-title="Star us on Github">
+                                    <a className="nav-link nav-link-icon" href="https://github.com/creativetimofficial" target="_blank" rel="noreferrer" data-toggle="tooltip" data-original-title="Star us on Github">
                                         <i className="fab fa-github" />
                                         <span className="nav-link-inner--text d-lg-none">Github</span>
                                     </a>
                                 </li>
                                 <li className="nav-item d-none d-lg-block ml-lg-4">
-                                    <a href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=ad_upgrade_pro" target="_blank" className="btn btn-neutral btn-icon">
+                                    <a href="https://www.creative-tim.com/product/argon-dashboard-pro?ref=ad_upgrade_pro" target="_blank" rel="noreferrer" className="btn btn-neutral btn-icon">
                                         <span className="btn-inner--icon">
                                             <i className="fas fa-shopping-cart mr-2" />
                                         </span>
@@ -109,12 +107,12 @@ class Login extends React.Component {
                                     <div className="card-header bg-transparent pb-5">
                                         <div className="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
                                         <div className="btn-wrapper text-center">
-                                            <a href="#" className="btn btn-neutral btn-icon">
-                                                <span className="btn-inner--icon"><img src={baseurl + "argon-dashboard-master/assets/img/icons/common/github.svg"} /></span>
+                                            <a href="/#" className="btn btn-neutral btn-icon">
+                                                <span className="btn-inner--icon"><img src={baseurl + "argon-dashboard-master/assets/img/icons/common/github.svg"}  alt="text"/></span>
                                                 <span className="btn-inner--text">Github</span>
                                             </a>
-                                            <a href="#" className="btn btn-neutral btn-icon">
-                                                <span className="btn-inner--icon"><img src={baseurl + "argon-dashboard-master/assets/img/icons/common/google.svg"} /></span>
+                                            <a href="/#" className="btn btn-neutral btn-icon">
+                                                <span className="btn-inner--icon"><img src={baseurl + "argon-dashboard-master/assets/img/icons/common/google.svg"}  alt="text" /></span>
                                                 <span className="btn-inner--text">Google</span>
                                             </a>
                                         </div>
@@ -123,7 +121,7 @@ class Login extends React.Component {
                                         <div className="text-center text-muted mb-4">
                                             <small>Or sign in with credentials</small>
                                         </div>
-                                        <form role="form">
+                                        <form >
                                             <div className="form-group mb-3">
                                                 <div className="input-group input-group-merge input-group-alternative">
                                                     <div className="input-group-prepend">
@@ -154,10 +152,10 @@ class Login extends React.Component {
                                 </div>
                                 <div className="row mt-3">
                                     <div className="col-6">
-                                        <a href="#" className="text-light"><small>Forgot password?</small></a>
+                                        <a href="/#" className="text-light"><small>Forgot password?</small></a>
                                     </div>
                                     <div className="col-6 text-right">
-                                        <a href="#" className="text-light"><small>Create new account</small></a>
+                                        <a href="/#" className="text-light"><small>Create new account</small></a>
                                     </div>
                                 </div>
                             </div>
@@ -170,22 +168,22 @@ class Login extends React.Component {
                         <div className="row align-items-center justify-content-xl-between">
                             <div className="col-xl-6">
                                 <div className="copyright text-center text-xl-left text-muted">
-                                    © 2020 <a href="https://www.creative-tim.com" className="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+                                    © 2020 <a href="https://www.creative-tim.com" className="font-weight-bold ml-1" rel="noreferrer" target="_blank">Creative Tim</a>
                                 </div>
                             </div>
                             <div className="col-xl-6">
                                 <ul className="nav nav-footer justify-content-center justify-content-xl-end">
                                     <li className="nav-item">
-                                        <a href="https://www.creative-tim.com" className="nav-link" target="_blank">Creative Tim</a>
+                                        <a href="https://www.creative-tim.com" className="nav-link" rel="noreferrer" target="_blank">Creative Tim</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="https://www.creative-tim.com/presentation" className="nav-link" target="_blank">About Us</a>
+                                        <a href="https://www.creative-tim.com/presentation" rel="noreferrer" className="nav-link" target="_blank">About Us</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="http://blog.creative-tim.com" className="nav-link" target="_blank">Blog</a>
+                                        <a href="http://blog.creative-tim.com" className="nav-link" rel="noreferrer" target="_blank">Blog</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" className="nav-link" target="_blank">MIT License</a>
+                                        <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" className="nav-link" rel="noreferrer" target="_blank">MIT License</a>
                                     </li>
                                 </ul>
                             </div>
@@ -199,4 +197,4 @@ class Login extends React.Component {
         );
     }
 }
-export default Login;
+export default UserLogin;
