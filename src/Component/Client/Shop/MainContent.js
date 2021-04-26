@@ -11,14 +11,14 @@ class MainContent extends React.Component {
         };
         const axios = require('axios');
     }
-    componentDidMount=()=> {
+    componentDidMount = () => {
         let self = this;
         axios.get('https://localhost:44384/api/Product')
             .then(function (response) {
                 // handle success
-               
+
                 self.setState({
-                    Products:response.data.data
+                    Products: response.data.data
                 })
             })
             .catch(function (error) {
@@ -28,25 +28,24 @@ class MainContent extends React.Component {
             .then(function () {
             });
     }
-    showProducts(Products){
-        var result=null;
-        console.log(Products)
-        if(Products.length>0){
+    showProducts(Products) {
+        var result = null;
+        if (Products.length > 0) {
             console.log("ok")
-            result=Products.map((product,index)=> {
-                return(<Product 
+            result = Products.map((product, index) => {
+                return (<Product
                     key={index}
                     ProductName={product.Name}
                     ImagePath={product.ImagePath}
                     NewPrice={product.Price}
                 />);
-                })
+            })
         }
         return result;
     }
     render() {
-        
-        var listProduct=this.state.Products;
+
+        var listProduct = this.state.Products;
         return (
 
             <div className="app__container">

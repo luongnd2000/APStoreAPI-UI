@@ -25,8 +25,8 @@ const routes = [
         exact: false,
         main: () =>
             <Admin />
-
-    },
+    }
+    ,
     {
         path: '',
         exact: false,
@@ -34,6 +34,6 @@ const routes = [
             <NotFound />
 
     }
-    
+
 ];
 export default routes;
