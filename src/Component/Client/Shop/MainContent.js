@@ -7,18 +7,33 @@ class MainContent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            Products: []
+            Products: [],
+            Categories: []
         };
         const axios = require('axios');
     }
-    componentDidMount=()=> {
+    componentDidMount = () => {
         let self = this;
         axios.get('https://localhost:44384/api/Product')
             .then(function (response) {
                 // handle success
-               
+
                 self.setState({
-                    Products:response.data.data
+                    Products: response.data.data
+                })
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+            });
+        axios.get('https://localhost:44384/api/ProductCategory')
+            .then(function (response) {
+                // handle success
+
+                self.setState({
+                    Categories: response.data.data
                 })
             })
             .catch(function (error) {
@@ -28,25 +43,44 @@ class MainContent extends React.Component {
             .then(function () {
             });
     }
-    showProducts(Products){
-        var result=null;
-        console.log(Products)
-        if(Products.length>0){
+    showCategories(Categories){
+        var result = null;
+        console.log(Categories)
+        if (Categories.length > 0) {
             console.log("ok")
-            result=Products.map((product,index)=> {
-                return(<Product 
+            result = Categories.map((category, index) => {
+                return (<Category
                     key={index}
+                    IsActive = {false}
+                    Name={category.Name}
+                ></Category>);
+            })
+        }
+        return result;
+    }
+    showProducts(Products) {
+        var result = null;
+        console.log(Products)
+        if (Products.length > 0) {
+            console.log("ok")
+            result = Products.map((product, index) => {
+                return (<Product
+                    key={index}
+                    ID={product.ID}
+                    OnShowDetail={this.OnShowDetail}
                     ProductName={product.Name}
                     ImagePath={product.ImagePath}
                     NewPrice={product.Price}
                 />);
-                })
+            })
         }
         return result;
     }
     render() {
+
+        var listProduct = this.state.Products;
         
-        var listProduct=this.state.Products;
+        var listCategory = this.state.Categories;
         return (
 
             <div className="app__container">
@@ -59,26 +93,15 @@ class MainContent extends React.Component {
           Danh mục
         </h3>
                                 <ul className="category-list">
-                                    <Category
-                                        Name="Hạt"
-                                    ></Category>
-                                    <Category
-                                        Name="Hạt"
-                                    ></Category>
-                                    <Category
-                                        Name="Hạt"
-                                    ></Category>
-                                    <Category
-                                        Name="Hạt"
-                                    ></Category>
+                                    {this.showCategories(listCategory)}
                                 </ul>
                             </nav>
                         </div>
                         <div className="col-lbr l-10 m-12 c-12">
                             <div className="home-filter hide-on-mobile-tablet">
                                 <span className="home-filter__label">Sắp xếp theo</span>
-                                <button className="home-filter__btn btn">Phổ biến</button>
-                                <button className="home-filter__btn btn btn--primary">Phổ mới nhất</button>
+                                <button className="home-filter__btn btn btn--primary">Phổ biến</button>
+                                <button className="home-filter__btn btn ">Mới nhất</button>
                                 <button className="home-filter__btn btn">Phổ bán chạy</button>
                                 <div className="select-input">
                                     <span className="select-input__label">Giá</span>
@@ -119,7 +142,6 @@ class MainContent extends React.Component {
                                 {/* List products */}
                                 <div className="row-lbr sm-gutter list-product">
                                     {this.showProducts(listProduct)}
-
                                 </div>
                             </div>
                             <ul className="pagination produce-pagination">

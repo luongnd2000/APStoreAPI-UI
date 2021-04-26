@@ -3,13 +3,15 @@ import NotFound from './Component/NotFound';
 import MainContent from './Component/Client/Shop/Shop';
 import React from 'react';
 import Admin from "./Component/Admin/MainContent/Admin";
+import DetailProduct from "./Component/Client/Shop/DetailProduct";
+import Shop from "./Component/Client/Shop/Shop";
 
 const routes = [
     {
-        path: '/',
+        path: '/product',
         exact: true,
         main: () =>
-            <MainContent />
+            <Shop />
 
     },
     {
@@ -26,7 +28,8 @@ const routes = [
         main: () =>
             <Admin />
 
-    },
+    }
+    ,
     {
         path: '',
         exact: false,

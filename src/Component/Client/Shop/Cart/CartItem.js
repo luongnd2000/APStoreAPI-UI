@@ -1,8 +1,20 @@
+import axios from 'axios';
 import React from 'react';
+import Cookies from 'universal-cookie';
+import { CartContext } from '../Context/CartProvider';
 
 class CartItem extends React.Component {
-    testOnclick() {
-        console.log("delete")
+    OnDelete() {
+        var result = window.confirm("Xóa sản phẩm " + this.props.Name + " khỏi giỏ hàng ?");
+        const cookies = new Cookies();
+        var userlogin = cookies.get('UserLogin');
+        if (result) {
+            axios.delete('https://localhost:44384/api/cart?userName=' + userlogin.Name + '&productID=' + this.props.ProductID, {
+            }).then((response) => {
+                console.log(response);
+                this.props.OnDelete();
+            });
+        }
     }
     render() {
         return (
@@ -23,7 +35,12 @@ class CartItem extends React.Component {
                         <span className="header__cart-item-description">
                             Phân loại: {this.props.Category}
                         </span>
-                        <span className="header__cart-item-remove" onClick={()=>this.testOnclick()}>Xóa</span>
+                        <CartContext.Consumer>
+
+                            {({ DeleteFromCart }) =>
+                                <span className="header__cart-item-remove" onClick={() => DeleteFromCart(this.props.ProductID, this.props.Name)}>Xóa</span>
+                            }
+                        </CartContext.Consumer>
                     </div>
                 </div>
             </li>

@@ -1,5 +1,13 @@
 import React from "react";
+import {
+  BrowserRouter as Router,
+  useHistory,
+} from "react-router-dom";
 
+function ShowDetail(ID) {
+    let history = useHistory();
+    history.push('/detail/' + ID)
+}
 export default function Product(props) {
 
     return (

@@ -1,32 +1,38 @@
-import MainContent from './Component/Client/Shop/Shop';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import UserLogin from "./Component/Client/Login/UserLogin";
-import NotFound from  './Component/NotFound';
-import routes from './Route';
-import { render } from '@testing-library/react';
-import { Component } from 'react';
-class App extends Component {
-  render(){
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Shop from './Component/Client/Shop/Shop';
+import UserLogin from './Component/Client/Login/UserLogin';
+import Admin from './Component/Admin/MainContent/Admin'
+export default function App () {
     return (
       <Router>
-        <div>
-          <Switch>
-            {this.ShowRoutes(routes)}
-          </Switch>
-        </div>
-      </Router>
+        <Switch>
+          <Route  path="/Shop">
+            <Shop />
+          </Route>
+          <Route  path="/Login">
+            <UserLogin />
+          </Route>
+          <Route  path="/Admin">
+            <Admin />
+          </Route>
+          <Route path="/topics">
+            <UserLogin />
+          </Route>
+        </Switch>
+    </Router>
     );
-  }
-  ShowRoutes=(routes)=>{
-    var result=null;
-    
-    result=routes.map((route,index)=>{
-      return(
-        <Route key ={index} path={route.path} exact={route.exact} component={route.main}></Route>
-      );
-    })
-    return result;
-  }
-}
+  // ShowRoutes = (routes) => {
+  //   var result = null;
 
-export default App;
+  //   result = routes.map((route, index) => {
+  //     return (
+  //       <Route key={index} path={route.path} exact={route.exact} component={route.main}></Route>
+  //     );
+  //   })
+  //   return result;
+  // }
+}
