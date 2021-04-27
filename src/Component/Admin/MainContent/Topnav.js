@@ -1,6 +1,8 @@
 import { Component } from 'react';
 
+const baseurl = "http://localhost:3000/";
 export default class Topnav extends Component {
+
     constructor(props) {
         super(props);
     }
@@ -56,7 +58,7 @@ export default class Topnav extends Component {
                                             <div className="row align-items-center">
                                                 <div className="col-auto">
                                                     {/* Avatar */}
-                                                    <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg" className="avatar rounded-circle" />
+                                                    <img alt="Image placeholder" src={`${baseurl}argon-dashboard-master/assets/img/theme/team-1.jpg`} className="avatar rounded-circle" />
                                                 </div>
                                                 <div className="col ml--2">
                                                     <div className="d-flex justify-content-between align-items-center">
@@ -75,7 +77,7 @@ export default class Topnav extends Component {
                                             <div className="row align-items-center">
                                                 <div className="col-auto">
                                                     {/* Avatar */}
-                                                    <img alt="Image placeholder" src="../assets/img/theme/team-2.jpg" className="avatar rounded-circle" />
+                                                    <img alt="Image placeholder" src={`${baseurl}argon-dashboard-master/assets/img/theme/team-2.jpg`} className="avatar rounded-circle" />
                                                 </div>
                                                 <div className="col ml--2">
                                                     <div className="d-flex justify-content-between align-items-center">
@@ -94,7 +96,7 @@ export default class Topnav extends Component {
                                             <div className="row align-items-center">
                                                 <div className="col-auto">
                                                     {/* Avatar */}
-                                                    <img alt="Image placeholder" src="../assets/img/theme/team-3.jpg" className="avatar rounded-circle" />
+                                                    <img alt="Image placeholder" src={`${baseurl}/argon-dashboard-master/assets/img/theme/team-3.jpg`} className="avatar rounded-circle" />
                                                 </div>
                                                 <div className="col ml--2">
                                                     <div className="d-flex justify-content-between align-items-center">
@@ -113,7 +115,7 @@ export default class Topnav extends Component {
                                             <div className="row align-items-center">
                                                 <div className="col-auto">
                                                     {/* Avatar */}
-                                                    <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg" className="avatar rounded-circle" />
+                                                    <img alt="Image placeholder" src={`${baseurl}/argon-dashboard-master/assets/img/theme/team-4.jpg`} className="avatar rounded-circle" />
                                                 </div>
                                                 <div className="col ml--2">
                                                     <div className="d-flex justify-content-between align-items-center">
@@ -132,7 +134,7 @@ export default class Topnav extends Component {
                                             <div className="row align-items-center">
                                                 <div className="col-auto">
                                                     {/* Avatar */}
-                                                    <img alt="Image placeholder" src="../assets/img/theme/team-5.jpg" className="avatar rounded-circle" />
+                                                    <img alt="Image placeholder" src={`${baseurl}/argon-dashboard-master/assets/img/theme/team-5.jpg`} className="avatar rounded-circle" />
                                                 </div>
                                                 <div className="col ml--2">
                                                     <div className="d-flex justify-content-between align-items-center">
@@ -203,7 +205,7 @@ export default class Topnav extends Component {
                                 <a className="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <div className="media align-items-center">
                                         <span className="avatar avatar-sm rounded-circle">
-                                            <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg" />
+                                            <img alt="Image placeholder" src={`${baseurl}/argon-dashboard-master/assets/img/theme/team-4.jpg`} />
                                         </span>
                                         <div className="media-body  ml-2  d-none d-lg-block">
                                             <span className="mb-0 text-sm  font-weight-bold">John Snow</span>

@@ -179,246 +179,27 @@ export default class DashBoard extends Component {
                             </div>
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-xl-8">
-                            <div className="card">
-                                <div className="card-header border-0">
-                                    <div className="row align-items-center">
-                                        <div className="col">
-                                            <h3 className="mb-0">Page visits</h3>
-                                        </div>
-                                        <div className="col text-right">
-                                            <a href="#!" className="btn btn-sm btn-primary">See all</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="table-responsive">
-                                    {/* Projects table */}
-                                    <table className="table align-items-center table-flush">
-                                        <thead className="thead-light">
-                                            <tr>
-                                                <th scope="col">Page name</th>
-                                                <th scope="col">Visitors</th>
-                                                <th scope="col">Unique users</th>
-                                                <th scope="col">Bounce rate</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">
-                                                    /argon/
-                                </th>
-                                                <td>
-                                                    4,569
-                                </td>
-                                                <td>
-                                                    340
-                                </td>
-                                                <td>
-                                                    <i className="fas fa-arrow-up text-success mr-3" /> 46,53%
-                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    /argon/index.html
-                                </th>
-                                                <td>
-                                                    3,985
-                                </td>
-                                                <td>
-                                                    319
-                                </td>
-                                                <td>
-                                                    <i className="fas fa-arrow-down text-warning mr-3" /> 46,53%
-                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    /argon/charts.html
-                                </th>
-                                                <td>
-                                                    3,513
-                                </td>
-                                                <td>
-                                                    294
-                                </td>
-                                                <td>
-                                                    <i className="fas fa-arrow-down text-warning mr-3" /> 36,49%
-                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    /argon/tables.html
-                                </th>
-                                                <td>
-                                                    2,050
-                                </td>
-                                                <td>
-                                                    147
-                                </td>
-                                                <td>
-                                                    <i className="fas fa-arrow-up text-success mr-3" /> 50,87%
-                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    /argon/profile.html
-                                </th>
-                                                <td>
-                                                    1,795
-                                </td>
-                                                <td>
-                                                    190
-                                </td>
-                                                <td>
-                                                    <i className="fas fa-arrow-down text-danger mr-3" /> 46,53%
-                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-xl-4">
-                            <div className="card">
-                                <div className="card-header border-0">
-                                    <div className="row align-items-center">
-                                        <div className="col">
-                                            <h3 className="mb-0">Social traffic</h3>
-                                        </div>
-                                        <div className="col text-right">
-                                            <a href="#!" className="btn btn-sm btn-primary">See all</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="table-responsive">
-                                    {/* Projects table */}
-                                    <table className="table align-items-center table-flush">
-                                        <thead className="thead-light">
-                                            <tr>
-                                                <th scope="col">Referral</th>
-                                                <th scope="col">Visitors</th>
-                                                <th scope="col" />
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <th scope="row">
-                                                    Facebook
-                                </th>
-                                                <td>
-                                                    1,480
-                                </td>
-                                                <td>
-                                                    <div className="d-flex align-items-center">
-                                                        <span className="mr-2">60%</span>
-                                                        <div>
-                                                            <div className="progress">
-                                                                <div className="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow={60} aria-valuemin={0} aria-valuemax={100} style={{ width: '60%' }} />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    Facebook
-                                </th>
-                                                <td>
-                                                    5,480
-                                </td>
-                                                <td>
-                                                    <div className="d-flex align-items-center">
-                                                        <span className="mr-2">70%</span>
-                                                        <div>
-                                                            <div className="progress">
-                                                                <div className="progress-bar bg-gradient-success" role="progressbar" aria-valuenow={70} aria-valuemin={0} aria-valuemax={100} style={{ width: '70%' }} />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    Google
-                                </th>
-                                                <td>
-                                                    4,807
-                                </td>
-                                                <td>
-                                                    <div className="d-flex align-items-center">
-                                                        <span className="mr-2">80%</span>
-                                                        <div>
-                                                            <div className="progress">
-                                                                <div className="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow={80} aria-valuemin={0} aria-valuemax={100} style={{ width: '80%' }} />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    Instagram
-                                </th>
-                                                <td>
-                                                    3,678
-                                </td>
-                                                <td>
-                                                    <div className="d-flex align-items-center">
-                                                        <span className="mr-2">75%</span>
-                                                        <div>
-                                                            <div className="progress">
-                                                                <div className="progress-bar bg-gradient-info" role="progressbar" aria-valuenow={75} aria-valuemin={0} aria-valuemax={100} style={{ width: '75%' }} />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th scope="row">
-                                                    twitter
-                                </th>
-                                                <td>
-                                                    2,645
-                                </td>
-                                                <td>
-                                                    <div className="d-flex align-items-center">
-                                                        <span className="mr-2">30%</span>
-                                                        <div>
-                                                            <div className="progress">
-                                                                <div className="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow={30} aria-valuemin={0} aria-valuemax={100} style={{ width: '30%' }} />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     {/* Footer */}
                     <footer className="footer pt-0">
                         <div className="row align-items-center justify-content-lg-between">
                             <div className="col-lg-6">
                                 <div className="copyright text-center  text-lg-left  text-muted">
-                                    © 2020 <a href="https://www.creative-tim.com" className="font-weight-bold ml-1" target="_blank">Creative Tim</a>
+                                    © 2020 <a href="https://www.creative-tim.com" rel="noreferrer" className="font-weight-bold ml-1" target="_blank">Creative Tim</a>
                                 </div>
                             </div>
                             <div className="col-lg-6">
                                 <ul className="nav nav-footer justify-content-center justify-content-lg-end">
                                     <li className="nav-item">
-                                        <a href="https://www.creative-tim.com" className="nav-link" target="_blank">Creative Tim</a>
+                                        <a href="https://www.creative-tim.com" rel="noreferrer" className="nav-link" target="_blank">Creative Tim</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="https://www.creative-tim.com/presentation" className="nav-link" target="_blank">About Us</a>
+                                        <a href="https://www.creative-tim.com/presentation" rel="noreferrer" className="nav-link" target="_blank">About Us</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="http://blog.creative-tim.com" className="nav-link" target="_blank">Blog</a>
+                                        <a href="http://blog.creative-tim.com" rel="noreferrer" className="nav-link" target="_blank">Blog</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" className="nav-link" target="_blank">MIT License</a>
+                                        <a href="https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md" rel="noreferrer" className="nav-link" target="_blank">MIT License</a>
                                     </li>
                                 </ul>
                             </div>

@@ -1,31 +1,31 @@
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import routes from './Route';
-import { Component } from 'react';
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    return (
-      <Router>
-        <div>
-          <Switch>
-            {this.ShowRoutes(routes)}
-          </Switch>
-        </div>
-      </Router>
-    );
-  }
-  ShowRoutes = (routes) => {
-    var result = null;
-
-    result = routes.map((route, index) => {
-      return (
-        <Route key={index} path={route.path} exact={route.exact} component={() => route.main(this.props)}></Route>
-      );
-    })
-    return result;
-  }
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Shop from './Component/Client/Shop/Shop';
+import UserLogin from './Component/Client/Login/UserLogin';
+import Admin from './Component/Admin/MainContent/Admin'
+export default function App() {
+  return (
+    <Router>
+      <Switch>
+        <Route exact path="/">
+          <Shop />
+        </Route>
+        <Route path="/Shop">
+          <Shop />
+        </Route>
+        <Route path="/Login">
+          <UserLogin />
+        </Route>
+        <Route path="/Admin">
+          <Admin />
+        </Route>
+        <Route path="/topics">
+          <UserLogin />
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
-
-export default App;

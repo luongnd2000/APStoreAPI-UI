@@ -13,7 +13,7 @@ class SideNav extends Component {
                 <div className="scrollbar-inner">
                     {/* Brand */}
                     <div className="sidenav-header  align-items-center">
-                        <a className="navbar-brand" href="javascript:void(0)">
+                        <a className="navbar-brand" href="#">
                             <img src={baseurl + "argon-dashboard-master/assets/img/brand/blue.png"} className="navbar-brand-img" alt="..." />
                         </a>
                     </div>

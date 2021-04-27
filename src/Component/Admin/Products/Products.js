@@ -9,25 +9,63 @@ export default class Products extends Component {
         super(props);
 
         this.state = {
-            products: []
+            products: [],
+            category: []
         };
-
+        this.handleDeleteProduct = this.handleDeleteProduct.bind(this);
+        this.searchCategoryByID = this.searchCategoryByID.bind(this);
     }
 
     componentDidMount = () => {
         let self = this;
         axios.get('https://localhost:44384/api/Product')
             .then(function (response) {
-                self.setState({ products: response.data.data })
+                self.setState({ products: response.data.data });
+                console.log("Success");
             })
             .catch(function (error) {
                 console.log(error);
             })
+        axios.get('https://localhost:44384/api/ProductCategory')
+            .then(function (res) {
+                if (res) {
+                    self.setState({ category: res.data.data });
+                }
+            })
+    }
+
+    componentDidUpdate() {
+        console.log("DIDUPDATE", this.state.products);
+    }
+
+    handleDeleteProduct(e) {
+        let self = this;
+        let IdProductDelete = Number.parseInt(e.target.getAttribute("data-id"));
+        axios.delete(`https://localhost:44384/api/Product?id=${IdProductDelete}`)
+            .then(function (res) {
+                if (res) {
+                    let products = self.state.products.filter(function (item, index) {
+                        return item.ID !== IdProductDelete;
+                    });
+                    self.setState({ products: products });
+                }
+            })
+    }
+
+    searchCategoryByID(CategoryID) {
+        let result = {};
+        let cat = this.state.category.find(function (cat, index) {
+            return cat.ID === CategoryID;
+        })
+        result = { ...cat }.Name;
+        return result;
     }
 
     render() {
         let products = this.state.products;
-        console.log("Product", products);
+        let category = this.state.category;
+        console.log("Product render", products);
+        const self = this;
         return (
             <div className="main-content" id="panel">
                 {/* Topnav */}
@@ -72,8 +110,8 @@ export default class Products extends Component {
                                             <tr>
                                                 <th scope="col" className="sort" data-sort="name">Product</th>
                                                 <th scope="col" className="sort" data-sort="budget">Price</th>
-                                                <th scope="col" className="sort" data-sort="status">Status</th>
-                                                <th scope="col">Users</th>
+                                                <th scope="col" className="sort" data-sort="status">Name Category</th>
+                                                {/* <th scope="col">Users</th> */}
                                                 {/* <th scope="col" className="sort" data-sort="completion">Completion</th>s */}
                                                 <th scope="col" />
                                             </tr>
@@ -86,7 +124,7 @@ export default class Products extends Component {
                                                             <th scope="row">
                                                                 <div className="media align-items-center">
                                                                     <a href="#" className="avatar rounded-circle mr-3">
-                                                                        <img alt="Image placeholder" src="../assets/img/theme/bootstrap.jpg" />
+                                                                        <img alt="Image placeholder" src={product.ImagePath} />
                                                                     </a>
                                                                     <div className="media-body">
                                                                         <span className="name mb-0 text-sm">{product.Name}</span>
@@ -98,26 +136,25 @@ export default class Products extends Component {
                                                             </td>
                                                             <td>
                                                                 <span className="badge badge-dot mr-4">
-                                                                    <i className="bg-warning" />
-                                                                    <span className="status">pending</span>
+                                                                    <span className="status">{self.searchCategoryByID(product.CategoryID)}</span>
                                                                 </span>
                                                             </td>
-                                                            <td>
+                                                            {/* <td>
                                                                 <div className="avatar-group">
                                                                     <a href="#" className="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                                                                        <img alt="Image placeholder" src="../assets/img/theme/team-1.jpg" />
+                                                                        <img alt="Image placeholder" src="../argon-dashboard-master/assets/img/theme/team-1.jpg" />
                                                                     </a>
                                                                     <a href="#" className="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
-                                                                        <img alt="Image placeholder" src="../assets/img/theme/team-2.jpg" />
+                                                                        <img alt="Image placeholder" src="../argon-dashboard-master/assets/img/theme/team-2.jpg" />
                                                                     </a>
                                                                     <a href="#" className="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
-                                                                        <img alt="Image placeholder" src="../assets/img/theme/team-3.jpg" />
+                                                                        <img alt="Image placeholder" src="../argon-dashboard-master/assets/img/theme/team-3.jpg" />
                                                                     </a>
                                                                     <a href="#" className="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                                                        <img alt="Image placeholder" src="../assets/img/theme/team-4.jpg" />
+                                                                        <img alt="Image placeholder" src="../argon-dashboard-master/assets/img/theme/team-4.jpg" />
                                                                     </a>
                                                                 </div>
-                                                            </td>
+                                                            </td> */}
                                                             {/* <td>
                                                             <div className="d-flex align-items-center">
                                                                 <span className="completion mr-2">60%</span>
@@ -129,23 +166,8 @@ export default class Products extends Component {
                                                             </div>
                                                         </td> */}
                                                             <td className="text-right">
-                                                                <div className="dropdown">
-                                                                    <a className="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        <i className="fas fa-ellipsis-v" />
-                                                                    </a>
-                                                                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                                                        <a className="dropdown-item" href={baseurl + "UpdateProduct/" + product.ID}>Repair</a>
-                                                                        <a className="dropdown-item" href="#">Delete</a>
-                                                                    </div>
-                                                                </div>
-                                                                <div className="dropdown">
-                                                                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown button</button>
-                                                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                                        <a className="dropdown-item" href="#">Action</a>
-                                                                        <a className="dropdown-item" href="#">Another action</a>
-                                                                        <a className="dropdown-item" href="#">Something else here</a>
-                                                                    </div>
-                                                                </div>
+                                                                <a type="button" className="btn btn-primary" href={baseurl + "Admin/UpdateProduct/" + product.ID} >UPDATE</a>
+                                                                <a type="button" className="btn btn-danger" href="#" data-id={product.ID} onClick={self.handleDeleteProduct}>DELETE</a>
                                                             </td>
                                                         </tr>
                                                     )
