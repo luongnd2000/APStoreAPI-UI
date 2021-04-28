@@ -6,8 +6,10 @@ import Cookies from 'universal-cookie';
 var baseurl = "http://localhost:3000/";
 
 class LoginForm extends React.Component {
+    
     constructor(props) {
         super(props);
+
         this.state = { Name: '', Pass: '', ResponseData: {} };
 
         this.handleChangeName = this.handleChangeName.bind(this);
