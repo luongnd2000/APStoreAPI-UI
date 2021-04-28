@@ -71,12 +71,12 @@ export default class AddProduct extends Component {
                                         <ol className="breadcrumb breadcrumb-links breadcrumb-dark">
                                             <li className="breadcrumb-item"><a href="#"><i className="fas fa-home" /></a></li>
                                             <li className="breadcrumb-item"><a href="#">Products</a></li>
-                                            <li className="breadcrumb-item active" aria-current="page">Products</li>
+                                            <li className="breadcrumb-item active" aria-current="page">Add Product</li>
                                         </ol>
                                     </nav>
                                 </div>
                                 <div className="col-lg-6 col-5 text-right">
-                                    <a href={baseurl + "Admin/AddProduct"} className="btn btn-sm btn-neutral">ADD PRODUCT</a>
+                                    <a href={baseurl + "Admin/Products"} className="btn btn-sm btn-neutral">List Product</a>
                                     <a href="#" className="btn btn-sm btn-neutral">Filters</a>
                                 </div>
                             </div>
