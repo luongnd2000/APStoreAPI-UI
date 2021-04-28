@@ -71,6 +71,7 @@ class AdressProvider extends Component {
             DeliveryDetailID: this.state.currentAdress.ID,
             DiscountCode: this.state.currentDiscount.ID === undefined ? "" : this.state.currentDiscount.ID
         }
+        var self=this
         axios({
             method: 'Post',
             url: 'https://localhost:44384/api/Bill',
@@ -80,6 +81,7 @@ class AdressProvider extends Component {
             console.log(response.data);
             if (response.data.status = 1) {
                 var billID = response.data.data[0].ID;
+                var listCart = []
                 console.log(newBIll);
                 list.forEach(element => {
                     if (element.IsChecked) {
@@ -88,9 +90,12 @@ class AdressProvider extends Component {
                         item.ProductID = element.ProductID
                         item.Quantities = element.Quantities
                         listBillDetail.push(item)
+                    } else {
+                        listCart.push(element)
                     }
                 });
                 console.log(listBillDetail)
+                var self1=self
                 axios({
                     method: 'Post',
                     url: 'https://localhost:44384/api/BillDetail',
@@ -98,7 +103,10 @@ class AdressProvider extends Component {
                     data: listBillDetail
                 }).then(function (response) {
                     if (response.data.status == 1) {
+
+                        self1.setState({listCartItem:listCart});
                         alert("Đặt hàng thành công hãy chờ để nhận hàng!");
+
                     }
                 });
 
@@ -230,7 +238,7 @@ class AdressProvider extends Component {
         this.CalculateQuantities();
     }
     componentDidMount = () => {
-        
+
         let self = this;
         const cookies = new Cookies();
         var userlogin = cookies.get('UserLogin');
@@ -374,14 +382,14 @@ class AdressProvider extends Component {
 
         }
     }
-    UpdateAdress(e,id){
-        this.setState({ModalUpdateAdressIsOpen:true});
+    UpdateAdress(e, id) {
+        this.setState({ ModalUpdateAdressIsOpen: true });
         e.preventDefault()
         this.state.listAdress.forEach(element => {
-            if(element.ID==id){
-                console.log("element "+ element.Name)
+            if (element.ID == id) {
+                console.log("element " + element.Name)
                 this.setState({
-                    adressToUpdate:element
+                    adressToUpdate: element
                 })
             }
         });
@@ -457,21 +465,22 @@ class AdressProvider extends Component {
             if (element.ID == id) {
                 this.setState({
                     currentDiscount: element
-                },function (){
-                    this.CalculateQuantities();});
+                }, function () {
+                    this.CalculateQuantities();
+                });
             }
         })
         this.setState({
             ModalDiscountIsOpen: false
         })
     }
-    AddAdress(Name,Adress,PhoneNumber){
+    AddAdress(Name, Adress, PhoneNumber) {
         console.log(Name)
         console.log(Adress)
         console.log(PhoneNumber)
-        var cookies=new Cookies();
-        var userLogin=cookies.get("UserLogin");
-        var self=this
+        var cookies = new Cookies();
+        var userLogin = cookies.get("UserLogin");
+        var self = this
         axios({
             method: 'Post',
             url: 'https://localhost:44384/api/Delivery',
@@ -480,86 +489,86 @@ class AdressProvider extends Component {
                 Name: Name, // This is the body part
                 Adress: Adress, // This is the body part
                 UserName: userLogin.Name,
-                PhoneNumber:PhoneNumber// This is the body part
+                PhoneNumber: PhoneNumber// This is the body part
             }
         }).then(function (response) {
             console.log(response);
-            if(response.data.status==1){
-                var adress={
-                    ID:response.data.data[0].ID,
-                    Name:Name,
-                    Adress:Adress,
-                    UserName:userLogin.Name,
-                    PhoneNumber:PhoneNumber
-                    
+            if (response.data.status == 1) {
+                var adress = {
+                    ID: response.data.data[0].ID,
+                    Name: Name,
+                    Adress: Adress,
+                    UserName: userLogin.Name,
+                    PhoneNumber: PhoneNumber
+
                 }
                 console.log(adress)
-                var list =self.state.listAdress;
+                var list = self.state.listAdress;
                 list.push(adress);
-                self.setState({listAdress:list})
+                self.setState({ listAdress: list })
                 console.log(list);
-                self.setState({ModalAddAdressIsOpen:false})
+                self.setState({ ModalAddAdressIsOpen: false })
             }
         }
         )
-        
+
     }
-    DeleteAdress(e,id){
+    DeleteAdress(e, id) {
         e.preventDefault()
-        console.log("Delete "+id);
-        var result =window.confirm("Bạn có chắc muốn xóa không ?");
-        if(!result) return;
-        var cookies=new Cookies();
-        var userLogin=cookies.get("UserLogin");
-         var self=this
+        console.log("Delete " + id);
+        var result = window.confirm("Bạn có chắc muốn xóa không ?");
+        if (!result) return;
+        var cookies = new Cookies();
+        var userLogin = cookies.get("UserLogin");
+        var self = this
         axios({
             method: 'Delete',
-            url: 'https://localhost:44384/api/Delivery?userName='+userLogin.Name+'&id='+id,
+            url: 'https://localhost:44384/api/Delivery?userName=' + userLogin.Name + '&id=' + id,
             headers: {}
         }).then(function (response) {
-            if(response.data.status==1){
+            if (response.data.status == 1) {
                 alert("Xóa thành công")
                 var arr = self.state.listAdress.filter(function (item) {
                     return item.ID !== id;
                 })
-                self.setState({listAdress:arr})
+                self.setState({ listAdress: arr })
             }
         })
     }
-    SaveAdress(name,adress,phone){
-        var ID=this.state.adressToUpdate.ID
-        var Name=name==null?this.state.adressToUpdate.Name:name
-        var Adress=adress==null?this.state.adressToUpdate.Adress:adress
-        var Phone=phone==null?this.state.adressToUpdate.PhoneNumber:phone
-        var obj={
-            ID:ID,
-            Name:Name,
-            Adress:Adress,
-            PhoneNumber:Phone
+    SaveAdress(name, adress, phone) {
+        var ID = this.state.adressToUpdate.ID
+        var Name = name == null ? this.state.adressToUpdate.Name : name
+        var Adress = adress == null ? this.state.adressToUpdate.Adress : adress
+        var Phone = phone == null ? this.state.adressToUpdate.PhoneNumber : phone
+        var obj = {
+            ID: ID,
+            Name: Name,
+            Adress: Adress,
+            PhoneNumber: Phone
         }
-        var self=this
+        var self = this
         axios({
             method: 'put',
             url: 'https://localhost:44384/api/Delivery',
             headers: {},
-            data:obj
+            data: obj
         }).then(function (response) {
             console.log(response);
-            if(response.data.status==1){
+            if (response.data.status == 1) {
                 self.state.listAdress.forEach(element => {
-                    if(element.ID==obj.ID){
-                        element.Name=obj.Name
-                        element.Adress=obj.Adress
-                        element.PhoneNumber=obj.PhoneNumber
+                    if (element.ID == obj.ID) {
+                        element.Name = obj.Name
+                        element.Adress = obj.Adress
+                        element.PhoneNumber = obj.PhoneNumber
                     }
                 });
                 self.setState({
-                    listAdress:self.state.listAdress
+                    listAdress: self.state.listAdress
                 })
             }
         })
         console.log(obj);
-        this.setState({ModalUpdateAdressIsOpen:false})
+        this.setState({ ModalUpdateAdressIsOpen: false })
     }
     render() {
         return <AdressContext.Provider value={{
@@ -593,10 +602,10 @@ class AdressProvider extends Component {
             OnChangeQuantities: this.OnChangeQuantities,
             OnAddQuantities: this.OnAddQuantities,
             DeleteFromCart: this.DeleteFromCart,
-            AddAdress:this.AddAdress,
-            DeleteAdress:this.DeleteAdress,
-            UpdateAdress:this.UpdateAdress,
-            SaveAdress:this.SaveAdress,
+            AddAdress: this.AddAdress,
+            DeleteAdress: this.DeleteAdress,
+            UpdateAdress: this.UpdateAdress,
+            SaveAdress: this.SaveAdress,
         }}>
             {this.props.children}
         </AdressContext.Provider>;

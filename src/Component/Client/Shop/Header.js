@@ -4,6 +4,8 @@ import UserAccount from './UserAccount'
 import { Component } from "react";
 import Cookies from "universal-cookie";
 import Cart from './Cart/Cart'
+import Product from "./Product";
+import { ProductContext } from "./Context/ProductProvider";
 
 class Header extends Component {
     constructor() {
@@ -114,12 +116,22 @@ class Header extends Component {
                                 </svg>
                             </a>
                         </div>
-
-                        <input type="checkbox" hidden id="mobile-search-checkbox" className="header__search-checkbox"></input>
+                        <ProductContext.Consumer>
+                            {({ OnChangeSearchString
+                            }) => (
+                                <input type="checkbox" hidden id="mobile-search-checkbox" className="header__search-checkbox" onChange={(e) => OnChangeSearchString(e)}></input>
+                            )}
+                        </ProductContext.Consumer>
 
                         <div className="header__search">
                             <div className="header__search-input-wrap">
-                                <input type="text" className="header__search-input" placeholder="Nhập để tìm kiếm sản phẩm"></input>
+                                <ProductContext.Consumer>
+                                    {({ OnChangeSearchString
+                                    }) => (
+                                        <input type="text" className="header__search-input" placeholder="Nhập để tìm kiếm sản phẩm" onChange={(e) => OnChangeSearchString(e)}></input>
+                                    )}
+                                </ProductContext.Consumer>
+
                                 <div className="header__search-history">
                                     <h3 className="header__search-history-heading">Lịch sử tìm kiếm</h3>
                                     <ul className="header__search-history-list">
@@ -148,9 +160,15 @@ class Header extends Component {
                                     </li>
                                 </ul>
                             </div>
-                            <button className="header__search-btn">
-                                <i className="header__search-btn-icon fas fa-search"></i>
-                            </button>
+                            <ProductContext.Consumer>
+                                {({ OnSearchProduct
+                                }) => (
+                                    <button className="header__search-btn" onClick={()=>OnSearchProduct()}>
+                                        <i className="header__search-btn-icon fas fa-search"></i>
+
+                                    </button>
+                                )}
+                            </ProductContext.Consumer>
                         </div>
 
                         <div className="wrap-cart-login">
