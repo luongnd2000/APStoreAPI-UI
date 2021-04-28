@@ -1,0 +1,87 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-size: 1.6rem;
+}
+.address {
+    padding: 0 30px;
+}
+.address-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0;
+    border-bottom: 2px solid #eee;
+}
+
+.btn-add-address {
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 25px 25px;
+}
+
+.btn-add-address:hover {
+    opacity: 0.9;
+    color: #fff;
+}
+
+.address-item {
+    padding: 30px 0;
+    border-bottom: 2px solid #eee;
+
+}
+
+.address-name, .address-phone, .address-address {
+    display: flex;
+    align-items: start;
+    padding: 5px 0;
+}
+
+.address-title {
+    color: #666;
+    margin-right: 10px;
+    text-align: right;
+    width: 50%;
+}
+
+.address-content {
+    margin-left: 10px;
+    text-align: left;
+    width: 50%;
+}
+
+.mark-default {
+    background-color: #00bfa5;
+    padding: 2px 8px 3px 8px;
+    margin-left: 4px;
+    color: #fff;
+    border-radius: 3px;
+}
+
+.address-control {
+    text-align: right;
+    margin: 20px 40px;
+}
+
+.address-control__buttons {
+    margin-bottom: 20px;
+}
+
+.btn-control {
+    padding: 10px 20px;
+}
+
+.btn-set-default {
+    border: 1px solid #ccc;
+    float: right;
+}
+
+.btn-is-default {
+    color: #ccc;
+    cursor: default;
+}
+
+.btn-is-default:hover {
+    cursor: default !important;
+}

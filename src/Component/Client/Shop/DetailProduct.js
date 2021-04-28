@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { Component } from "react";
 import { useParams, withRouter } from "react-router";
 import NumberFormat from "react-number-format"
-import { CartContext } from "./Context/CartProvider";
+import AdressProvider, { AdressContext } from "./Adress/AdressProvider";
 var baseurl = "http://localhost:3000/";
 
 class DetailProduct extends Component {
@@ -175,12 +175,12 @@ class DetailProduct extends Component {
                                             </div>
                                         </div>
                                         <div className="product-option__select">
-                                            <CartContext.Consumer>
+                                            <AdressContext.Consumer>
                                             {({AddToCart})=>
                                                 <button type="button" className="product-option-btn btn-add-to-cart" onClick={()=>AddToCart(this.state)}>Thêm vào giỏ
                       hàng</button>}
                                 
-                                            </CartContext.Consumer>
+                                            </AdressContext.Consumer>
                                             <button type="button" className="product-option-btn btn-buy-now">Mua ngay</button>
                                         </div>
                                     </div>

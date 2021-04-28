@@ -11,15 +11,30 @@ class CartProvider extends Component {
             cartItems: []
         };
         this.AddToCart = this.AddToCart.bind(this);
+        this.CheckAllProduct = this.CheckAllProduct.bind(this);
         this.DeleteFromCart = this.DeleteFromCart.bind(this);
+        this.onCheck = this.onCheck.bind(this);
+    }
+    onCheck(id){
+        var list=this.state.cartItems
+        list.forEach(element => {
+            if(element.ProductID==id)element.IsChecked=!element.IsChecked;
+        });
+        this.setState({
+            cartItems:list
+        })
     }
     componentDidMount = () => {
         let self = this;
         axios.get('https://localhost:44384/api/cart?UserName=Luong')
             .then(function (response) {
                 // handle success
+                var data=response.data.data;
+                data.forEach(element => {
+                    element.IsChecked=false;
+                });
                 self.setState({
-                    cartItems: response.data.data
+                    cartItems: data
                 })
             })
             .catch(function (error) {
@@ -28,6 +43,15 @@ class CartProvider extends Component {
             })
             .then(function () {
             });
+    }
+    CheckAllProduct(event){
+        var list=this.state.cartItems
+        list.forEach(element => {
+            element.IsChecked=event.target.checked;
+        });
+        this.setState({
+            cartItems:list
+        })
     }
     AddToCart(product) {
         const cookies = new Cookies();
