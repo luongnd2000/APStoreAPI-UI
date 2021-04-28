@@ -69,27 +69,35 @@ class SideNav extends Component {
                                         <i className="ni ni-money-coins text-primary" />
                                         <span className="nav-link-text">Khuyến mãi</span>
                                     </a>
+                                    <a className="nav-link" href={baseurl + "admin/Category"}>
+                                        <i className="ni ni-bullet-list-67 text-default" />
+                                        <span className="nav-link-text">Category</span>
+                                    </a>
+                                </li>
+                                <li className="nav-item">
+                                    <a className="nav-link" href={baseurl + "admin/Discount"}>
+                                        <i className="ni ni-circle-08" />
+                                        <span className="nav-link-text">Discount</span>
+                                    </a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link" href={baseurl + "Admin/Products"}>
                                         <i className="ni ni-circle-08 text-primary" />
                                         <span className="nav-link-text">Khách hàng</span>
                                     </a>
-                                </li>
-                                
-                             
-                                
+                                </li>                                  
                             </ul>
-                            {/* Divider */}
-                            <hr className="my-3" />
+                            {/* Divider
+                            <hr className="my-3" /> */}
                             {/* Heading */}
-                            <h6 className="navbar-heading p-0 text-muted">
+                            {/* <h6 className="navbar-heading p-0 text-muted">
                                 <span className="docs-normal">Documentation</span>
-                            </h6>
+                            </h6> */}
                             {/* Navigation */}
                             <ul className="navbar-nav mb-md-3">
                             
                             </ul>
+
                         </div>
                     </div>
                 </div>

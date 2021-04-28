@@ -15,6 +15,11 @@ import Products from "../Products/Products";
 import AddProduct from "../AddProduct/AddProduct";
 import UpdateProduct from "../UpdateProduct/UpdateProduct";
 import ListBill from "../BIll/ListBill";
+import Category from "../Category/Category";
+import AddCategory from "../AddCategory/AddCategory";
+import UpdateCategory from "../UpdateCategory/UpdateCategory";
+import Discount from "../Discount/Discount";
+import AddDiscount from "../AddDiscount/AddDiscount";
 
 var baseurl = "http://localhost:3000/";
 export default function Admin() {
@@ -60,6 +65,21 @@ export default function Admin() {
                     </Route>
                     <Route path={`${path}/UpdateProduct/:productId`}>
                         <UpdateProduct />
+                    </Route>
+                    <Route path={`${path}/Category`}>
+                        <Category />
+                    </Route>
+                    <Route path={`${path}/AddCategory`}>
+                        <AddCategory />
+                    </Route>
+                    <Route path={`${path}/UpdateCategory/:categoryId`}>
+                        <UpdateCategory />
+                    </Route>
+                    <Route path={`${path}/Discount`}>
+                        <Discount />
+                    </Route>
+                    <Route path={`${path}/AddDiscount`}>
+                        <AddDiscount />
                     </Route>
                 </Switch>
             </div>

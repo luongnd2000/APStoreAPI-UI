@@ -2,6 +2,8 @@ import { Component } from 'react';
 import Topnav from '../MainContent/Topnav';
 import { useParams, withRouter } from 'react-router';
 import axios from 'axios';
+
+const baseurl = 'http://localhost:3000/'
 class UpdateProduct extends Component {
     constructor(props) {
         super(props);
@@ -70,7 +72,8 @@ class UpdateProduct extends Component {
             <div className="main-content" id="panel" onSubmit={this.handleSubmit}>
                 {/* Topnav */}
                 <Topnav />
-                {/* Add Product */} <div className="header bg-primary pb-6">
+                {/* Header */}
+                <div className="header bg-primary pb-6">
                     <div className="container-fluid">
                         <div className="header-body">
                             <div className="row align-items-center py-4">
@@ -80,20 +83,22 @@ class UpdateProduct extends Component {
                                         <ol className="breadcrumb breadcrumb-links breadcrumb-dark">
                                             <li className="breadcrumb-item"><a href="#"><i className="fas fa-home" /></a></li>
                                             <li className="breadcrumb-item"><a href="#">Products</a></li>
-                                            <li className="breadcrumb-item active" aria-current="page">Products</li>
+
+                                            <li className="breadcrumb-item active" aria-current="page">Update Product</li>
+
                                         </ol>
                                     </nav>
                                 </div>
                                 <div className="col-lg-6 col-5 text-right">
+
                                     <a href="/admin/products" className="btn btn-sm btn-neutral">Danh sách sản phẩm</a>
+
                                     <a href="#" className="btn btn-sm btn-neutral">Filters</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                {/* Add Product */}
                 <div class="container-fluid mt--6">
                     <div class="row">
                         <div class="col">
@@ -161,11 +166,8 @@ class UpdateProduct extends Component {
                     </div>
                 </div>
             </div>
-
         )
-
     }
-
 }
 
 export default withRouter(UpdateProduct);

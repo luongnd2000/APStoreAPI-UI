@@ -9,7 +9,6 @@ function ShowDetail(ID) {
     history.push('/detail/' + ID)
 }
 export default function Product(props) {
-
     return (
         <div className="col-lbr l-2-4 m-4 c-6-lbr">
             <a className="home-produce-item" href={"/Shop/Detail/"+props.ID}>
