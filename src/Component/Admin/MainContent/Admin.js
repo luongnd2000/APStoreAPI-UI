@@ -14,10 +14,10 @@ import Maps from "../Maps/Maps";
 import Products from "../Products/Products";
 import AddProduct from "../AddProduct/AddProduct";
 import UpdateProduct from "../UpdateProduct/UpdateProduct";
+import ListBill from "../BIll/ListBill";
 
 var baseurl = "http://localhost:3000/";
 export default function Admin() {
-
     let { path, url } = useRouteMatch();
     return (
         <div>
@@ -51,6 +51,9 @@ export default function Admin() {
                     </Route>
                     <Route path={`${path}/Products`}>
                         <Products />
+                    </Route>
+                    <Route path={`${path}/Bills`}>
+                        <ListBill />
                     </Route>
                     <Route path={`${path}/AddProduct`}>
                         <AddProduct />
