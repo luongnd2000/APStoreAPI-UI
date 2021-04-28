@@ -9,6 +9,7 @@ export default class AddProduct extends Component {
         super(props);
         this.state = {
             product: {},
+            fileUpload:{},
             category: []
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,7 +30,30 @@ export default class AddProduct extends Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
+        console.log(this.state.fileUpload);
+        const formData = new FormData();
+        // Update the formData object
+        formData.append(
+          "myFile",
+          this.state.fileUpload
+        );
+        var self=this;
+        axios.post("https://localhost:44384/api/File", formData)
+        .then(function(response){
+            console.log(response)
+            var path=response.data.data[0];
+            var product=self.state.product;
+            if(product.CategoryID==undefined) product.CategoryID=1
+            product.ImagePath=path
+            axios({
+                method: 'Post',
+                url: 'https://localhost:44384/api/Product',
+                headers: {},
+                data: product
+            }).then(function (response) {
+                console.log(response)
+            })
+        });
     }
 
     handleEnterNameProduct(e) {
@@ -51,7 +75,8 @@ export default class AddProduct extends Component {
     }
 
     handleChooseImageProduct(e) {
-
+        console.log(e.target.files[0]);
+        this.setState({fileUpload:e.target.files[0]})
     }
 
     render() {
@@ -99,14 +124,14 @@ export default class AddProduct extends Component {
                                             <legend>ADD PRODUCTS</legend>
                                             {/* Text input*/}
                                             <div className="form-group">
-                                                <label className="col-md-8 control-label" htmlFor="product_name">PRODUCT NAME</label>
+                                                <label className="col-md-8 control-label" htmlFor="product_name">Tên sản phẩm</label>
                                                 <div className="col-md-8">
-                                                    <input id="product_name" name="product_name" placeholder="PRODUCT NAME" className="form-control input-md" required type="text" onChange={this.handleEnterNameProduct} />
+                                                    <input id="product_name" name="product_name" placeholder="Nhập tên sản phẩm" className="form-control input-md" required type="text" onChange={this.handleEnterNameProduct} />
                                                 </div>
                                             </div>
                                             {/* Select Basic */}
                                             <div className="form-group">
-                                                <label className="col-md-8 control-label" htmlFor="product_categorie">PRODUCT CATEGORY</label>
+                                                <label className="col-md-8 control-label" htmlFor="product_categorie">Danh mục sản phẩm</label>
                                                 <div className="col-md-8">
                                                     <select id="product_categorie" name="product_categorie" className="form-control" defaultValue={1} onChange={this.handleChooseCategoryIdProduct}>
                                                         {
@@ -121,14 +146,14 @@ export default class AddProduct extends Component {
                                             </div>
                                             {/* Text input*/}
                                             <div className="form-group">
-                                                <label className="col-md-8 control-label" htmlFor="percentage_discount">PERCENTAGE DISCOUNT</label>
+                                                <label className="col-md-8 control-label" htmlFor="percentage_discount">Giá</label>
                                                 <div className="col-md-8">
-                                                    <input id="percentage_discount" name="percentage_discount" placeholder="PERCENTAGE DISCOUNT" className="form-control input-md" required type="number" onChange={this.handleEnterPriceProduct} />
+                                                    <input id="percentage_discount" name="percentage_discount" placeholder="Nhập giá của sản phẩm" className="form-control input-md" required type="number" onChange={this.handleEnterPriceProduct} />
                                                 </div>
                                             </div>
                                             {/* Text input*/}
                                             <div className="form-group">
-                                                <label className="col-md-8 control-label" htmlFor="approuved_by">IMAGE PRODUCT</label>
+                                                <label className="col-md-8 control-label" htmlFor="approuved_by">Ảnh minh họa</label>
                                                 <div className="col-md-8">
                                                     {/* File Button */}
                                                     <div className="form-group">

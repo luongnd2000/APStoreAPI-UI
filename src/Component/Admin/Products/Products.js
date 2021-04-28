@@ -18,7 +18,7 @@ export default class Products extends Component {
 
     componentDidMount = () => {
         let self = this;
-        axios.get('https://localhost:44384/api/Product')
+        axios.get('https://localhost:44384/api/Product?idFilter=0&searchString=')
             .then(function (response) {
                 self.setState({ products: response.data.data });
                 console.log("Success");
@@ -39,7 +39,10 @@ export default class Products extends Component {
     }
 
     handleDeleteProduct(e) {
+        e.preventDefault();
         let self = this;
+        var result=window.confirm("Bạn có chắc muốn xóa không ?");
+        if(!result) return;
         let IdProductDelete = Number.parseInt(e.target.getAttribute("data-id"));
         axios.delete(`https://localhost:44384/api/Product?id=${IdProductDelete}`)
             .then(function (res) {
@@ -166,8 +169,17 @@ export default class Products extends Component {
                                                             </div>
                                                         </td> */}
                                                             <td className="text-right">
-                                                                <a type="button" className="btn btn-primary" href={baseurl + "Admin/UpdateProduct/" + product.ID} >UPDATE</a>
-                                                                <a type="button" className="btn btn-danger" href="#" data-id={product.ID} onClick={self.handleDeleteProduct}>DELETE</a>
+                                                                <div className="dropdown">
+                                                                    <a className="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i className="fas fa-ellipsis-v" />
+                                                                    </a>
+                                                                    <div className="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                                        <a className="dropdown-item" href={baseurl + "Admin/UpdateProduct/" + product.ID}>Sửa</a>
+                                                                        <a className="dropdown-item" href="#"  data-id={product.ID} onClick={self.handleDeleteProduct}>Xóa</a>
+                                                                    </div>
+                                                                </div>
+                                                                {/* <a type="button" className="btn btn-primary" href={baseurl + "Admin/UpdateProduct/" + product.ID} >UPDATE</a>
+                                                                <a type="button" className="btn btn-danger" href="#" data-id={product.ID} onClick={self.handleDeleteProduct}>DELETE</a> */}
                                                             </td>
                                                         </tr>
                                                     )

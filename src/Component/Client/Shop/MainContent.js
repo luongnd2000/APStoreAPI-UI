@@ -7,32 +7,6 @@ import ProductProvider, { ProductContext } from "./Context/ProductProvider";
 class MainContent extends React.Component {
     constructor(props) {
         super(props);
-<<<<<<< HEAD
-        this.state = {
-            Products: []
-        };
-        const axios = require('axios');
-    }
-    componentDidMount = () => {
-        let self = this;
-        axios.get('https://localhost:44384/api/Product')
-            .then(function (response) {
-                // handle success
-
-                self.setState({
-                    Products: response.data.data
-                })
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .then(function () {
-            });
-    }
-    showProducts(Products) {
-        var result = null;
-=======
     }
     showCategories(Categories) {
         var result = null;
@@ -51,11 +25,11 @@ class MainContent extends React.Component {
     showProducts(Products) {
         var result = null;
         console.log(Products);
->>>>>>> b002985... Filter product
         if (Products.length > 0) {
             result = Products.map((product, index) => {
                 return (<Product
                     key={index}
+                    ID={product.ID}
                     ProductName={product.Name}
                     ImagePath={product.ImagePath}
                     NewPrice={product.Price}
