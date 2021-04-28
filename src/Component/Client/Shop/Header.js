@@ -166,7 +166,7 @@ class Header extends Component {
                                         <a href="/#">Tài khoản của tôi</a>
                                     </li>
                                     <li className="header__navbar-user-item">
-                                        <a href="/#">Địa chỉ của tôi</a>
+                                        <Link to="/shop/address">Địa chỉ của tôi</Link>
                                     </li>
                                     <li className="header__navbar-user-item">
                                         <a href="/#">Đơn mua</a>

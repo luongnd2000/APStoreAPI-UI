@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import Cookies from 'universal-cookie';
-import { CartContext } from '../Context/CartProvider';
+import AdressProvider, { AdressContext } from "../Adress/AdressProvider";
 
 class CartItem extends React.Component {
     OnDelete() {
@@ -35,12 +35,12 @@ class CartItem extends React.Component {
                         <span className="header__cart-item-description">
                             Phân loại: {this.props.Category}
                         </span>
-                        <CartContext.Consumer>
+                        <AdressContext.Consumer>
 
                             {({ DeleteFromCart }) =>
                                 <span className="header__cart-item-remove" onClick={() => DeleteFromCart(this.props.ProductID, this.props.Name)}>Xóa</span>
                             }
-                        </CartContext.Consumer>
+                        </AdressContext.Consumer>
                     </div>
                 </div>
             </li>

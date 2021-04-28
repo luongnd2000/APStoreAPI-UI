@@ -227,6 +227,7 @@ label {
 .cart-voucher__more {
     color: #0384ff;
     font-size: 1.5rem;
+    margin: 5px;
 }
 
 .cart-voucher__more:hover {
@@ -253,6 +254,7 @@ label {
 .shopee-drawer {
     color: #0384ff;
     font-size: 1.5rem;
+    margin:5px;
 }
 
 .shopee-drawer:hover {

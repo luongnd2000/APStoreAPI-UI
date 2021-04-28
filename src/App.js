@@ -25,14 +25,4 @@ export default function App () {
         </Switch>
     </Router>
     );
-  // ShowRoutes = (routes) => {
-  //   var result = null;
-
-  //   result = routes.map((route, index) => {
-  //     return (
-  //       <Route key={index} path={route.path} exact={route.exact} component={route.main}></Route>
-  //     );
-  //   })
-  //   return result;
-  // }
 }
